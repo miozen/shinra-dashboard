@@ -334,7 +334,10 @@ const clearPaneAnimation = () => {
   settingsPaneTransition.value = ''
 }
 
-const categoryPresentation: Record<SETTINGS_MENU_KEY, { icon: Component; component: Component }> = {
+const categoryPresentation: Record<
+  Exclude<SETTINGS_MENU_KEY, SETTINGS_MENU_KEY.backend>,
+  { icon: Component; component: Component }
+> = {
   [SETTINGS_MENU_KEY.general]: { icon: HomeIcon, component: ZashboardSettings },
   [SETTINGS_MENU_KEY.overview]: { icon: CubeTransparentIcon, component: OverviewSettings },
   [SETTINGS_MENU_KEY.proxies]: { icon: GlobeAltIcon, component: ProxiesSettings },

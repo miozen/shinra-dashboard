@@ -8,8 +8,10 @@ export type SettingsCategoryItem = {
   searchEntries?: Array<{ anchorKey: string; label: string }>
 }
 
+export type VisibleSettingsMenuKey = Exclude<SETTINGS_MENU_KEY, SETTINGS_MENU_KEY.backend>
+
 export type SettingsCategory = {
-  key: SETTINGS_MENU_KEY
+  key: VisibleSettingsMenuKey
   label: string
   description: string
   items: SettingsCategoryItem[]
