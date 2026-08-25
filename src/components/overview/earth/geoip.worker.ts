@@ -17,7 +17,7 @@ if (!(globalThis as { Buffer?: unknown }).Buffer) {
   ;(globalThis as { Buffer?: unknown }).Buffer = Buffer
 }
 
-const DATABASE_NAME = 'zashboard-earth-geoip'
+const DATABASE_NAME = 'shinra-dashboard-earth-geoip'
 const DATABASE_STORE = 'city-database'
 const DATABASE_KEY = 'dbip-city-lite'
 const DATABASE_TTL = 30 * 24 * 60 * 60 * 1000

@@ -2,35 +2,11 @@
   <template v-if="hasVisibleApplicationItems">
     <div class="settings-section-label">{{ $t('settingsSectionApplication') }}</div>
     <div class="settings-grid">
-      <SettingItem
-        :setting-key="k.actions"
-        :anchor-key="`${k.actions}.upgradeDashboard`"
-        :when="can('dashboardUpgrade')"
-      >
-        <div class="setting-item-label">{{ $t('upgradeDashboard') }}</div>
-        <button
-          :class="twMerge('btn btn-sm', isUIUpgrading ? 'animate-pulse' : '')"
-          @click="handlerClickUpgradeUI"
-        >
-          <ArrowUpCircleIcon class="h-4 w-4" />
-        </button>
-      </SettingItem>
       <SettingItem :setting-key="k.actions">
         <div class="setting-item-label">{{ $t('dashboardSettings') }}</div>
         <DashboardSettings icon-only />
       </SettingItem>
       <LanguageSelect />
-      <SettingItem
-        :setting-key="k.autoUpgradeDashboard"
-        :when="can('dashboardUpgrade')"
-      >
-        <div class="setting-item-label">{{ $t('autoUpgradeDashboard') }}</div>
-        <input
-          v-model="autoUpgradeDashboard"
-          class="toggle"
-          type="checkbox"
-        />
-      </SettingItem>
     </div>
   </template>
 
@@ -196,8 +172,7 @@
 </template>
 
 <script setup lang="ts">
-import { can, showDisplayAllFeatures } from '@/assembly/backend'
-import { upgradeUIAPI } from '@/assembly/version'
+import { showDisplayAllFeatures } from '@/assembly/backend'
 import DashboardSettings from '@/components/common/DashboardSettings.vue'
 import SelectInput from '@/components/common/SelectInput.vue'
 import TextInput from '@/components/common/TextInput.vue'
@@ -207,14 +182,11 @@ import SettingItem from '@/components/settings/SettingItem.vue'
 import { useIsSettingVisible } from '@/composables/settings'
 import { GENERAL_ITEM_KEYS } from '@/config/settingsItems'
 import { IP_INFO_API } from '@/constant'
-import { handlerUpgradeSuccess } from '@/helper'
-import { notifyRequestError } from '@/helper/requestError'
 import { useTooltip } from '@/helper/tooltip'
 import { isMiddleScreen } from '@/helper/utils'
 import {
   autoDisconnectIdleUDP,
   autoDisconnectIdleUDPTime,
-  autoUpgradeDashboard,
   disablePullToRefresh,
   displayAllFeatures,
   geoipASNDatabaseURL,
@@ -224,16 +196,14 @@ import {
   swipeInPages,
   swipeInTabs,
 } from '@/store/settings'
-import { ArrowUpCircleIcon, QuestionMarkCircleIcon } from '@heroicons/vue/24/outline'
-import { twMerge } from 'tailwind-merge'
-import { computed, ref } from 'vue'
+import { QuestionMarkCircleIcon } from '@heroicons/vue/24/outline'
+import { computed } from 'vue'
 
 const { showTip } = useTooltip()
 const k = GENERAL_ITEM_KEYS
 
 const isVisibleActions = useIsSettingVisible(k.actions)
 const isVisibleLanguage = useIsSettingVisible(k.language)
-const isVisibleAutoUpgrade = useIsSettingVisible(k.autoUpgradeDashboard)
 const isVisibleAutoDisconnectIdleUDP = useIsSettingVisible(k.autoDisconnectIdleUDP)
 const isVisibleAutoDisconnectIdleUDPTime = useIsSettingVisible(k.autoDisconnectIdleUDPTime)
 const isVisibleIPInfoAPI = useIsSettingVisible(k.IPInfoAPI)
@@ -247,7 +217,7 @@ const isVisibleShortcuts = useIsSettingVisible(k.keyboardShortcuts)
 const isVisibleDisplayAllFeatures = useIsSettingVisible(k.displayAllFeatures)
 
 const hasVisibleApplicationItems = computed(
-  () => isVisibleActions.value || isVisibleLanguage.value || isVisibleAutoUpgrade.value,
+  () => isVisibleActions.value || isVisibleLanguage.value,
 )
 const hasVisibleNetworkItems = computed(
   () =>
@@ -268,18 +238,4 @@ const hasVisibleInteractionItems = computed(
     (showDisplayAllFeatures.value && isVisibleDisplayAllFeatures.value),
 )
 
-const isUIUpgrading = ref(false)
-const handlerClickUpgradeUI = async () => {
-  if (isUIUpgrading.value) return
-  isUIUpgrading.value = true
-  try {
-    await upgradeUIAPI()
-    handlerUpgradeSuccess()
-    setTimeout(() => window.location.reload(), 1000)
-  } catch (error) {
-    notifyRequestError(error)
-  } finally {
-    isUIUpgrading.value = false
-  }
-}
 </script>

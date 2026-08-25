@@ -30,13 +30,11 @@ export const resetCore = () => {
 export const showDisplayAllFeatures = computed(() => false)
 
 export type Cap =
-  | 'singboxDeprecationNotice'
   | 'rules'
   | 'dnsQuery'
   | 'dnsFlush'
   | 'fakeIPFlush'
   | 'coreActions'
-  | 'dashboardUpgrade'
   | 'tools'
   | 'goroutines'
   | 'startedAt'

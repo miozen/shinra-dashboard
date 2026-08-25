@@ -210,7 +210,7 @@ export const getPublicIPInfo = async (api: IP_INFO_API): Promise<IPInfo> => {
  * unlike the Cache API, also works over plain HTTP), and queried in the browser
  * so location lookups no longer hit a remote geolocation API.
  */
-const GEOIP_IDB_NAME = 'zashboard-geoip'
+const GEOIP_IDB_NAME = 'shinra-dashboard-geoip'
 const GEOIP_IDB_STORE = 'mmdb'
 const GEOIP_DATABASE_TTL = 30 * 24 * 60 * 60 * 1000
 

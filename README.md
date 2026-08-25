@@ -42,5 +42,5 @@ API service to serve at `/dashboard/`.
 - Logs, traffic and overview charts
 - Interface theme, language, layout and other local display preferences
 
-The rules page is intentionally removed. The native sing-box API used by this
-Dashboard does not expose the Clash rules-list data expected by Zashboard 3.22.
+The rules page is intentionally removed. The native sing-box API does not
+expose a complete rules-list endpoint.

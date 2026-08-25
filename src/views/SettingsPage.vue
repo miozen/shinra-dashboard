@@ -267,7 +267,7 @@ import BackendStatusDot from '@/components/common/BackendStatusDot.vue'
 import CtrlsBar from '@/components/common/CtrlsBar.vue'
 import SelectInput from '@/components/common/SelectInput.vue'
 import ConnectionsSettings from '@/components/settings/connections/ConnectionsSettings.vue'
-import ZashboardSettings from '@/components/settings/general/ZashboardSettings.vue'
+import ShinraSettings from '@/components/settings/general/ShinraSettings.vue'
 import OverviewSettings from '@/components/settings/overview/OverviewSettings.vue'
 import ProxiesSettings from '@/components/settings/proxies/ProxiesSettings.vue'
 import SettingsCustomizationDialog from '@/components/settings/SettingsCustomizationDialog.vue'
@@ -338,7 +338,7 @@ const categoryPresentation: Record<
   Exclude<SETTINGS_MENU_KEY, SETTINGS_MENU_KEY.backend>,
   { icon: Component; component: Component }
 > = {
-  [SETTINGS_MENU_KEY.general]: { icon: HomeIcon, component: ZashboardSettings },
+  [SETTINGS_MENU_KEY.general]: { icon: HomeIcon, component: ShinraSettings },
   [SETTINGS_MENU_KEY.overview]: { icon: CubeTransparentIcon, component: OverviewSettings },
   [SETTINGS_MENU_KEY.proxies]: { icon: GlobeAltIcon, component: ProxiesSettings },
   [SETTINGS_MENU_KEY.connections]: {

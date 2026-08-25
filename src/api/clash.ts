@@ -142,11 +142,6 @@ export const queryDNSAPI = (params: { name: string; type: string }) => {
   })
 }
 
-// 面板自升级。mihomo 与 sing-box 的 Clash 兼容 API 都提供,honk 没有(见 dashboardUpgrade)。
-export const upgradeUIAPI = () => {
-  return axios.post('/upgrade/ui')
-}
-
 export const createClashWebSocket = <T>(url: string, searchParams?: Record<string, string>) => {
   const backend = activeBackend.value!
   const resurl = new URL(`${getUrlFromBackend(backend).replace('http', 'ws')}/${url}`)
@@ -285,19 +280,6 @@ export const upgradeCoreAPI = (type: 'release' | 'alpha' | 'auto') => {
 
 export const restartCoreAPI = () => {
   return axios.post('/restart')
-}
-
-// 面板设置同步。/storage/zashboard 是 mihomo 扩展。
-export const getStorageAPI = () => {
-  return axios.get<Record<string, unknown>>(`/storage/zashboard`)
-}
-
-export const setStorageAPI = (value: Record<string, string>) => {
-  return axios.put(`/storage/zashboard`, value)
-}
-
-export const deleteStorageAPI = () => {
-  return axios.delete(`/storage/zashboard`)
 }
 
 // ==========================================================================

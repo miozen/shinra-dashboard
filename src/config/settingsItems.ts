@@ -35,72 +35,63 @@ export const SETTINGS_MENU_LABELS: Record<SETTINGS_MENU_KEY, string> = {
 export const SETTINGS_CATEGORIES: SettingsCategory[] = [
   {
     key: SETTINGS_MENU_KEY.general,
-    label: 'zashboardSettings',
+    label: 'shinraDashboardSettings',
     description: 'settingsDescriptionGeneral',
     items: [
       {
-        key: `${SETTINGS_MENU_KEY.general}.zashboardSettings.actions`,
+        key: `${SETTINGS_MENU_KEY.general}.shinraDashboardSettings.actions`,
         label: 'actions',
         section: 'settingsSectionApplication',
         searchEntries: [
           {
-            anchorKey: `${SETTINGS_MENU_KEY.general}.zashboardSettings.actions.upgradeDashboard`,
-            label: 'upgradeDashboard',
-          },
-          {
-            anchorKey: `${SETTINGS_MENU_KEY.general}.zashboardSettings.actions`,
+            anchorKey: `${SETTINGS_MENU_KEY.general}.shinraDashboardSettings.actions`,
             label: 'dashboardSettings',
           },
         ],
       },
       {
-        key: `${SETTINGS_MENU_KEY.general}.zashboardSettings.autoSwitchTheme`,
+        key: `${SETTINGS_MENU_KEY.general}.shinraDashboardSettings.autoSwitchTheme`,
         label: 'autoSwitchTheme',
         section: 'appearance',
       },
       {
-        key: `${SETTINGS_MENU_KEY.general}.zashboardSettings.defaultTheme`,
+        key: `${SETTINGS_MENU_KEY.general}.shinraDashboardSettings.defaultTheme`,
         label: 'defaultTheme',
         section: 'appearance',
       },
       {
-        key: `${SETTINGS_MENU_KEY.general}.zashboardSettings.darkTheme`,
+        key: `${SETTINGS_MENU_KEY.general}.shinraDashboardSettings.darkTheme`,
         label: 'darkTheme',
         section: 'appearance',
       },
       {
-        key: `${SETTINGS_MENU_KEY.general}.zashboardSettings.customBackgroundURL`,
+        key: `${SETTINGS_MENU_KEY.general}.shinraDashboardSettings.customBackgroundURL`,
         label: 'customBackgroundURL',
         section: 'appearance',
       },
       {
-        key: `${SETTINGS_MENU_KEY.general}.zashboardSettings.transparent`,
+        key: `${SETTINGS_MENU_KEY.general}.shinraDashboardSettings.transparent`,
         label: 'transparent',
         section: 'appearance',
       },
       {
-        key: `${SETTINGS_MENU_KEY.general}.zashboardSettings.blurIntensity`,
+        key: `${SETTINGS_MENU_KEY.general}.shinraDashboardSettings.blurIntensity`,
         label: 'blurIntensity',
         section: 'appearance',
       },
       {
-        key: `${SETTINGS_MENU_KEY.general}.zashboardSettings.fonts`,
+        key: `${SETTINGS_MENU_KEY.general}.shinraDashboardSettings.fonts`,
         label: 'fonts',
         section: 'appearance',
       },
       {
-        key: `${SETTINGS_MENU_KEY.general}.zashboardSettings.emoji`,
+        key: `${SETTINGS_MENU_KEY.general}.shinraDashboardSettings.emoji`,
         label: 'emoji',
         section: 'appearance',
       },
       {
-        key: `${SETTINGS_MENU_KEY.general}.zashboardSettings.language`,
+        key: `${SETTINGS_MENU_KEY.general}.shinraDashboardSettings.language`,
         label: 'language',
-        section: 'settingsSectionApplication',
-      },
-      {
-        key: `${SETTINGS_MENU_KEY.general}.zashboardSettings.autoUpgradeDashboard`,
-        label: 'autoUpgradeDashboard',
         section: 'settingsSectionApplication',
       },
       {

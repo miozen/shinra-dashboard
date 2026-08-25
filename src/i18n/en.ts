@@ -16,7 +16,7 @@ const en = {
   clashApi: 'Clash API',
   singboxApi: 'sing-box API',
   singboxSupportEndingTitle: 'sing-box support is ending',
-  singboxSupportEndingMessage: 'zashboard will remove support for sing-box in the next release.',
+  singboxSupportEndingMessage: 'Shinra Dashboard uses the native sing-box API.',
   dontShowAgain: "Don't show again",
   skip: 'Skip',
   // Tools page
@@ -312,7 +312,6 @@ const en = {
   dashboardSettingsCore: 'Core',
   dashboardSettingsJsonFile: 'JSON file',
   dashboardSettingsUrl: 'URL',
-  autoSyncSettings: 'Auto-sync settings',
   uploadSettings: 'Upload settings to core',
   syncSettings: 'Sync settings from core',
   deleteUploadedSettings: 'Delete uploaded settings from core',
@@ -324,7 +323,7 @@ const en = {
   customTheme: 'Custom theme',
   unavailableProxy: 'Hide unavailable proxies',
   protocolTips:
-    'You are trying to connect to an HTTP backend, but zashboard is provided via HTTPS. This may cause connection errors. Please allow insecure content in your browser settings or use the HTTP version of zashboard, such as http://board.zash.run.place.',
+    'The Dashboard must use the same origin as its sing-box API. Open the Dashboard from the Shinra API service.',
   global: 'Global',
   direct: 'Direct',
   lowLatencyDesc: 'Yellow threshold',
@@ -336,7 +335,6 @@ const en = {
   restartCoreConfirm:
     'Restart the core now? The proxy service will be briefly interrupted and existing connections will be dropped.',
   checkCoreUpgrade: 'Check for core upgrades',
-  autoUpgradeDashboard: 'Auto-upgrade dashboard',
   autoUpgradeCore: 'Auto-upgrade core',
   secondaryPath: 'Secondary path',
   secondaryPathTip: 'If present, start with "/", otherwise leave empty.',
@@ -413,7 +411,7 @@ const en = {
   // Page controls and interaction
   independentLatencyTest: 'Independent latency test',
   independentLatencyTestTip:
-    "When enabled, the latency test will use URLs specified in the configuration file instead of zashboard's URL settings. Latency will be displayed independently based on the URLs set in policy groups.",
+    "When enabled, the latency test will use URLs specified in the configuration file instead of the Dashboard's URL settings. Latency will be displayed independently based on the URLs set in policy groups.",
   search: 'Search',
   searchProxyGroup: 'Search proxy groups',
   searchProxyNode: 'Search proxy nodes',
@@ -500,7 +498,7 @@ const en = {
   flushSmartWeights: 'Clear smart weights',
   IPInfoAPI: 'IP info API',
   IPInfoAPITip:
-    "This API is used for IP geolocation lookups in connection details and zashboard's DNS query feature. IP Check and Earth use their own API selections.",
+    "This API is used for IP geolocation lookups in connection details. IP Check and Earth use their own API selections.",
   general: 'General',
   groupProxiesByProvider: 'Group proxies by provider',
   useSmartGroupSort: 'Sort smart groups by usage frequency',
@@ -508,7 +506,7 @@ const en = {
   autoDisconnectIdleUDP: 'Auto-disconnect idle UDP connections',
   autoDisconnectIdleUDPTime: 'UDP idle time',
   autoDisconnectIdleUDPTip:
-    "When enabled, opening zashboard will close UDP connections that have been idle longer than the configured time. This can help with UDP connections that don't disconnect automatically.",
+    "When enabled, opening the Dashboard will close UDP connections that have been idle longer than the configured time. This can help with UDP connections that don't disconnect automatically.",
   customGlobalNode: 'Custom global node',
   connectionTopology: 'Connection topology',
   applyConnectionFilter: 'Apply connection filters',
@@ -527,11 +525,11 @@ const en = {
   checking: 'Checking...',
   copySuccess: 'Copied successfully',
   importFromBackendTip:
-    'The default ./zashboard-settings.json is located in the ui folder. Please ensure the ui folder exists and contains the configuration file.',
+    'The default ./shinra-dashboard-settings.json is located in the dashboard folder. Please ensure it is available before importing.',
   importFailed: 'Import failed, please check the URL: {url}',
   autoImportFromUrl: 'Auto-import',
   autoImportFromUrlTip:
-    'When enabled, settings will be automatically imported from the URL when opening zashboard. If the hash differs from the last imported hash, settings will be re-imported and the page will be refreshed.',
+    'When enabled, settings will be automatically imported from the URL when opening the Dashboard. If the hash differs from the last imported hash, settings will be re-imported and the page will be refreshed.',
   getting: 'Getting...',
   mmdbSizeTip: 'If you are using MMDB-format GEO files, this number will be 0.',
   displayFinalOutbound: 'Show final outbound node',
@@ -546,7 +544,7 @@ const en = {
   proxyChainExit: 'Proxy chain exit',
   nodeType: 'Node type',
   connectionCount: 'Connection count',
-  zashboardSettings: 'Dashboard settings',
+  shinraDashboardSettings: 'Shinra Dashboard',
   backendSettings: 'Backend settings',
   generalSettings: 'General settings',
   overviewSettings: 'Overview settings',

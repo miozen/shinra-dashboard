@@ -18,7 +18,7 @@ const ru: LANG_MESSAGE = {
   clashApi: 'Clash API',
   singboxApi: 'sing-box API',
   singboxSupportEndingTitle: 'Поддержка sing-box прекращается',
-  singboxSupportEndingMessage: 'zashboard прекратит поддержку sing-box в следующем выпуске.',
+  singboxSupportEndingMessage: 'Shinra Dashboard использует нативный API sing-box.',
   dontShowAgain: 'Больше не показывать',
   skip: 'Пропустить',
   // Tools
@@ -314,7 +314,6 @@ const ru: LANG_MESSAGE = {
   dashboardSettingsCore: 'Ядро',
   dashboardSettingsJsonFile: 'JSON файл',
   dashboardSettingsUrl: 'URL',
-  autoSyncSettings: 'Автосинхронизация настроек',
   uploadSettings: 'Загрузить настройки в ядро',
   syncSettings: 'Синхронизировать настройки из ядра',
   deleteUploadedSettings: 'Удалить загруженные настройки из ядра',
@@ -326,7 +325,7 @@ const ru: LANG_MESSAGE = {
   customTheme: 'Пользовательская тема',
   unavailableProxy: 'Скрыть недоступное',
   protocolTips:
-    'Вы пытаетесь подключиться к HTTP-бэкенду, но zashboard предоставляется через HTTPS. Это может вызвать ошибки подключения. Разрешите небезопасный контент в настройках браузера или используйте HTTP-версию панели, например, http://board.zash.run.place.',
+    'Dashboard должен использовать тот же origin, что и API sing-box. Откройте панель через API-службу Shinra.',
   global: 'Глобальный',
   direct: 'Прямой',
   lowLatencyDesc: 'Желтый порог',
@@ -338,7 +337,6 @@ const ru: LANG_MESSAGE = {
   restartCoreConfirm:
     'Перезапустить ядро сейчас? Работа прокси ненадолго прервётся, существующие соединения будут разорваны.',
   checkCoreUpgrade: 'Проверить доступность обновления ядра',
-  autoUpgradeDashboard: 'Автоматически обновлять панель до новой версии',
   autoUpgradeCore: 'Автоматически обновлять ядро до новой версии',
   secondaryPath: 'Дополнительный путь',
   secondaryPathTip: 'Если присутствует, начните с "/", в противном случае оставьте пустым.',
@@ -511,7 +509,7 @@ const ru: LANG_MESSAGE = {
   autoDisconnectIdleUDP: 'Автоматически отключить UDP-идле',
   autoDisconnectIdleUDPTime: 'Время UDP-идле',
   autoDisconnectIdleUDPTip:
-    'При включении открытие zashboard приведёт к закрытию UDP-соединений, продолжительность которых превышает заданное количество минут. Это может помочь в случае с некоторыми UDP-соединениями, которые не разрываются автоматически, как ожидается.',
+    'При включении открытие Dashboard приведёт к закрытию UDP-соединений, продолжительность которых превышает заданное количество минут. Это может помочь в случае с некоторыми UDP-соединениями, которые не разрываются автоматически, как ожидается.',
   customGlobalNode: 'Пользовательский глобальный узел',
   connectionTopology: 'Топология соединений',
   applyConnectionFilter: 'Применять фильтры соединений',
@@ -530,11 +528,11 @@ const ru: LANG_MESSAGE = {
   checking: 'Проверка...',
   copySuccess: 'Копирование успешно',
   importFromBackendTip:
-    'По умолчанию ./zashboard-settings.json находится в папке ui. Пожалуйста, убедитесь, что папка ui существует и содержит файл конфигурации.',
+    'Файл по умолчанию — ./shinra-dashboard-settings.json. Перед импортом убедитесь, что он доступен.',
   importFailed: 'Импорт не выполнен, проверьте url {url}',
   autoImportFromUrl: 'Автоматический импорт',
   autoImportFromUrlTip:
-    'При включении настройки будут автоматически импортироваться из url при открытии zashboard. Если хэш отличается от последнего импортированного хэша, настройки будут импортированы заново и страница будет обновлена.',
+    'При включении настройки будут автоматически импортироваться из URL при открытии Dashboard. Если хэш отличается от последнего импортированного хэша, настройки будут импортированы заново и страница будет обновлена.',
   getting: 'Получение...',
   mmdbSizeTip: 'Если вы используете mmdb-формат файлов geo, то количество будет равно 0',
   displayFinalOutbound: 'Показать конечный исходящий узел',
@@ -549,7 +547,7 @@ const ru: LANG_MESSAGE = {
   proxyChainExit: 'Выход из цепочки прокси',
   nodeType: 'Тип узла',
   connectionCount: 'Количество соединений',
-  zashboardSettings: 'Настройки панели',
+  shinraDashboardSettings: 'Shinra Dashboard',
   backendSettings: 'Настройки бэкенда',
   generalSettings: 'Общие настройки',
   overviewSettings: 'Настройки обзора',
