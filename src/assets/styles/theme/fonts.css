@@ -1,0 +1,24 @@
+/*
+ * Shinra Dashboard ships Sarasa UI plus bundled emoji fonts so flags render
+ * consistently across browsers and operating systems.
+ */
+
+@theme {
+  --font-SarasaUI: 'SarasaUiSC-Regular', system-ui;
+  --font-SarasaUI-NotoEmoji: 'SarasaUiSC-Regular', 'NotoEmoji', system-ui;
+  --font-SarasaUI-Twemoji: 'SarasaUiSC-Regular', 'Twemoji', system-ui;
+}
+
+@layer utilities {
+  @font-face {
+    font-family: 'NotoEmoji';
+    src: url('/src/assets/fonts/NotoColorEmoji-flagsonly.ttf') format('truetype');
+  }
+}
+
+@layer utilities {
+  @font-face {
+    font-family: 'Twemoji';
+    src: url('/src/assets/fonts/TwemojiMozilla-flags.woff2') format('woff2');
+  }
+}

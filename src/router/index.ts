@@ -1,0 +1,109 @@
+import { can, type Cap } from '@/assembly/backend'
+import { resolvePageTransition } from '@/composables/pageTransition'
+import { ROUTE_NAME } from '@/constant'
+import { renderRoutes } from '@/helper'
+import { i18n } from '@/i18n'
+import { language } from '@/store/settings'
+import ConnectionsPage from '@/views/ConnectionsPage.vue'
+import HomePage from '@/views/HomePage.vue'
+import LogsPage from '@/views/LogsPage.vue'
+import OverviewPage from '@/views/OverviewPage.vue'
+import ProxiesPage from '@/views/ProxiesPage.vue'
+import SettingsPage from '@/views/SettingsPage.vue'
+import { useTitle } from '@vueuse/core'
+import { watch } from 'vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
+
+const childrenRouter = [
+  {
+    path: 'proxies',
+    name: ROUTE_NAME.proxies,
+    component: ProxiesPage,
+  },
+  {
+    path: 'overview',
+    name: ROUTE_NAME.overview,
+    component: OverviewPage,
+  },
+  {
+    path: 'connections',
+    name: ROUTE_NAME.connections,
+    component: ConnectionsPage,
+  },
+  {
+    path: 'logs',
+    name: ROUTE_NAME.logs,
+    component: LogsPage,
+  },
+  {
+    path: 'tools',
+    name: ROUTE_NAME.tools,
+    component: () => import('@/views/ToolsPage.vue'),
+  },
+  {
+    path: 'settings',
+    name: ROUTE_NAME.settings,
+    component: SettingsPage,
+  },
+]
+
+// Routes that require a specific capability to be visitable.
+const ROUTE_CAPABILITY: Partial<Record<string, Cap>> = {
+  [ROUTE_NAME.tools]: 'tools',
+}
+
+const router = createRouter({
+  history: createWebHashHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      redirect: ROUTE_NAME.proxies,
+      component: HomePage,
+      children: childrenRouter,
+    },
+    {
+      path: '/:catchAll(.*)',
+      redirect: ROUTE_NAME.proxies,
+    },
+  ],
+})
+
+const title = useTitle('Shinra Dashboard')
+const setTitleByName = (name: string | symbol | undefined) => {
+  if (typeof name === 'string') {
+    title.value = `Shinra | ${i18n.global.t(name)}`
+  } else {
+    title.value = 'Shinra Dashboard'
+  }
+}
+
+router.beforeEach((to, from) => {
+  resolvePageTransition(to, from)
+
+  // Block navigation to a page the active backend's channels can't serve.
+  const requiredCap = typeof to.name === 'string' ? ROUTE_CAPABILITY[to.name] : undefined
+  if (requiredCap && !can(requiredCap)) {
+    router.push({ name: ROUTE_NAME.proxies })
+  }
+})
+
+router.afterEach((to) => {
+  setTitleByName(to.name)
+})
+
+watch(language, () => {
+  setTimeout(() => {
+    setTitleByName(router.currentRoute.value.name)
+  })
+})
+
+// 能力变化(切后端 / 内核探测出结果)后,把停留在已失效页面的用户送回代理页。
+watch(renderRoutes, () => {
+  const routeName = router.currentRoute.value.name
+  const requiredCap = typeof routeName === 'string' ? ROUTE_CAPABILITY[routeName] : undefined
+  if (requiredCap && !can(requiredCap)) {
+    router.push({ name: ROUTE_NAME.proxies })
+  }
+})
+
+export default router
