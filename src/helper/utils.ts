@@ -72,12 +72,13 @@ export const getUrlFromBackend = (end: {
   return `${end.protocol}://${end.host}:${end.port}${end.secondaryPath || ''}`
 }
 
-// sing-box 后端复用顶层连接字段作为 gRPC baseUrl(secondaryPath 留空)。
+// sing-box API can be mounted under a same-origin reverse-proxy path. Keep the
+// path with the endpoint so unary RPC and WebSocket streams share one base.
 export const getSingboxUrlFromBackend = (
-  end: Pick<Backend, 'type' | 'protocol' | 'host' | 'port'>,
+  end: Pick<Backend, 'type' | 'protocol' | 'host' | 'port' | 'secondaryPath'>,
 ) => {
   if (end.type !== 'singbox' || !end.host) return ''
-  return `${end.protocol}://${end.host}:${end.port}`
+  return `${end.protocol}://${end.host}:${end.port}${end.secondaryPath || ''}`
 }
 
 export const getSingboxSecret = (end: Pick<Backend, 'type' | 'password'>) =>

@@ -9,7 +9,7 @@ export type Backend = {
   protocol: string
   host: string
   port: string
-  secondaryPath: string // 仅 clash
+  secondaryPath: string // Clash 二级路径或 sing-box 反向代理 API 路径
   password: string // 通用:Clash secret / sing-box gRPC Bearer token
   uuid: string
   label?: string
