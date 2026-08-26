@@ -1,18 +1,28 @@
 // sing-box 后端的 config 组装:仅暴露 clash-mode,其余配置项保持默认。
 // 把 gRPC getClashModeStatus 的结果转换成 Clash 的 Config 形状,写入门面状态。
 import { getSingboxClient } from '@/api/singbox/client'
+import { Code, ConnectError } from '@connectrpc/connect'
 import type { Config } from '@/types'
 import { configs, defaultConfig } from './index'
 
 const fetchSingboxConfigs = async (): Promise<Config> => {
   const client = getSingboxClient()?.client
   if (!client) return { ...defaultConfig }
-  const status = await client.getClashModeStatus({})
-  return {
-    ...defaultConfig,
-    mode: status.currentMode,
-    'mode-list': status.modeList,
-    modes: status.modeList,
+  try {
+    const status = await client.getClashModeStatus({})
+    return {
+      ...defaultConfig,
+      mode: status.currentMode,
+      'mode-list': status.modeList,
+      modes: status.modeList,
+    }
+  } catch (error) {
+    // Clash mode is optional in sing-box. Its absence must not break the
+    // Dashboard or surface as an unhandled promise rejection.
+    if (error instanceof ConnectError && error.code === Code.NotFound) {
+      return { ...defaultConfig }
+    }
+    throw error
   }
 }
 
