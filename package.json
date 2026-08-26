@@ -1,6 +1,6 @@
 {
   "name": "shinra-dashboard",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Shinra Dashboard for the sing-box API",
   "license": "MIT",
   "type": "module",
